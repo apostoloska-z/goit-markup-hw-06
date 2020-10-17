@@ -9,6 +9,7 @@
     --background-dark-color: #2F303A;
     --background-light-color: #F5F4FA;
     --semitransparent-address-color:  rgba(255, 255, 255, 0.6);
+    --semitransparent-border-color:  rgba(255, 255, 255, 0.3);
     --section-border-color: solid #ECECEC;
     --card-border-color: solid #EEEEEE;
     --hero-bg: #C4C4C4;
@@ -16,6 +17,8 @@
     --services-bg: rgba(47, 48, 58, 0.8);
     --backdrop-color: rgba(0, 0, 0, 0.2);
     --border-radius: rgba(0, 0, 0, 0.1);
+    --modal-input-border:  rgba(33, 33, 33, 0.2);
+    --placeholder-color: rgba(117, 117, 117, 0.5);
 
     --transition-timing: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -89,59 +92,6 @@ img {
     color: var(--title-dark-color);
 }
 
-.backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--backdrop-color);
-    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1), visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.is-hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    width: 528px;
-    height: 581px;
-    background-color: var(--title-light-color);
-    border-radius: 4px;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.is-hidden .modal {
-    transform: translate(-50%, -50%) scale(0.5);
-}
-
-.close-button {
-    position: absolute;
-    top: 8px;
-    right: 8px;;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px; 
-    height: 30px;
-    border-radius: 50%;
-    border: 1px solid var(--border-radius);
-    background-color: var(--title-light-color);
-}
-
-.close-button-svg {
-    width: 11px;
-    height: 11px;
-}
-
-
 /*  ============ END COMPONENTS ============ */
 
 /*  ============ HEADER ============ */
@@ -213,7 +163,6 @@ img {
     border-radius: 4px;
 }
 
-
 .contact-list {
     display:flex;
     margin-left: auto;
@@ -263,7 +212,6 @@ img {
 .contact-list-link:focus .contact-list-svg {
     fill: var(--accent-color);
 }
-
 
 /*  ============ END HEADER ============ */
 
@@ -361,10 +309,10 @@ img {
     height: 50px;
     margin-right: 12px;
     padding: 15px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+    border: 1px solid var(--semitransparent-border-color);
     border-radius: 4px;
     background-color: var(--background-dark-color);
+    color: var(--title-light-color);
 }
 
 .submit-button {
@@ -402,11 +350,9 @@ img {
     font-size: 16px;
     line-height: 1.25;
     letter-spacing: 0.03em;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--semitransparent-address-color);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
-
 
 /*  ============ END FOOTER ============ */
 
@@ -457,9 +403,71 @@ img {
     cursor: pointer;
 }
 
-.modal-form {
-     padding: 40px 40px;
-    }
+  /*  ============ END HERO  ============ */
+
+  /*  ============ MODAL ============ */
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--backdrop-color);
+    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1), visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 528px;
+    height: 581px;
+    background-color: var(--title-light-color);
+    border-radius: 4px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+.close-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; 
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--border-radius);
+    background-color: var(--title-light-color);
+}
+
+.close-button-svg {
+    width: 11px;
+    height: 11px;
+    cursor: pointer;
+    transition: fill var(--transition-timing);
+}  
+
+.close-button:focus svg {
+    fill: var(--accent-color);
+}
+
+.modal-wrapper {
+    padding: 40px 40px;
+}
 
 .modal-form-slogan {
     display: block;
@@ -485,9 +493,10 @@ img {
     padding-left: 42px;
     width: 100%;
     height: 40px;
-    border: 1px solid rgba(33, 33, 33, 0.2);
+    border: 1px solid var(--modal-input-border);
     border-radius: 4px;
     cursor: pointer;
+    transition: outline var(--transition-timing), border-color var(--transition-timing);
 }
 
 .modal-form-svg {
@@ -496,6 +505,7 @@ img {
     left: 12px;
     width: 18px;
     height: 18px;
+    transition: fill var(--transition-timing);
 }
 
 .modal-form-container {
@@ -512,9 +522,10 @@ img {
     padding: 12px 16px;
     margin-bottom: 20px;
     resize: none;
-    border: 1px solid rgba(33, 33, 33, 0.2);
+    border: 1px solid var(--modal-input-border);
     border-radius: 4px;
     cursor: pointer;
+    transition: outline var(--transition-timing), border-color var(--transition-timing);
 }
 
 .modal-form textarea::placeholder {
@@ -522,7 +533,7 @@ img {
     font-size: 13px;
     line-height: 1.143;
     letter-spacing: 0.01em;
-    color: rgba(117, 117, 117, 0.5);
+    color: var(--placeholder-color);
 }
 
 .modal-form-input:focus,
@@ -535,6 +546,21 @@ img {
     fill: var(--accent-color);
 }
 
+
+.modal-form-conditions {
+    color: var(--accent-color);
+}
+
+.modal-form-button {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+
+.modal-form-policy {
+    display: block;
+    text-align: center;
+}
+
 .modal-form-checkbox-label {
     display: inline-block;
     margin-bottom: 30px;
@@ -545,20 +571,32 @@ img {
     color: var(--description-color);
 }
 
-.modal-form-conditions {
-    color: var(--accent-color);
+.modal-form-checkbox-label::before {
+    display: inline-block;
+    margin-right: 8px;
+    content: "";
+    width: 16px;
+    height: 15px;
+    border: 2px solid var(--logo-dark-color);
+    border-radius: 3px;
 }
 
-.modal-form-button {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+.policy-accept {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.modal-form-submitting {
-    display: block;
-    text-align: center;
+
+.modal-form-checkbox:checked + .modal-form-checkbox-label::before {
+    background-image: url(../images/svg/check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--accent-color);
+    border: none;
 }
 
-  /*  ============ END HERO  ============ */
+  /*  ============ END MODAL ============ */
 
   /*  ============ ADVANTAGES  ============ */
 
