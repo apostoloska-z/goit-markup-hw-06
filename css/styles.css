@@ -573,6 +573,7 @@ img {
 
 .modal-form-checkbox-label::before {
     display: inline-block;
+    vertical-align: middle;
     margin-right: 8px;
     content: "";
     width: 16px;
