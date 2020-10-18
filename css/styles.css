@@ -452,16 +452,17 @@ img {
     border-radius: 50%;
     border: 1px solid var(--border-radius);
     background-color: var(--title-light-color);
+    cursor: pointer;
 }
 
 .close-button-svg {
     width: 11px;
     height: 11px;
-    cursor: pointer;
     transition: fill var(--transition-timing);
 }  
 
-.close-button:focus svg {
+.close-button:focus svg,
+.close-button:hover svg {
     fill: var(--accent-color);
 }
 
